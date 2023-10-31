@@ -45,28 +45,72 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 
 4-bit Count Down Counter
-### Procedure
-/* write all the steps invloved */
 
+### Procedure
+
+1.Set the input as clock.
+
+2.Register the output of 4 bit.
+
+3.Use Posedge on the input clock.
+
+4.For Up counter use AND and OR gates to declare the value of each bit.
+
+5.For Down counter use AND, OR and NOT gates to declare the value of each bit.
+
+6.End the module.
 
 
 ### PROGRAM 
+
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: SANJAY T
+RegisterNumber: 212222110039 
 */
 
+## UP COUNTER:
 
 
+module EXP6(clk,A);
+input clk;
+output reg [3:0]A;
+always@(posedge clk)
+begin
+A[3]=((A[2]&A[1])&A[0])^A[3];
+A[2]=(A[1]&A[0])^A[2];
+A[1]=(A[0]^A[1]);
+A[0]=1^A[0];
+end
+endmodule
 
+
+## DOWN COUNTER:
+
+
+module d6(clk,A);
+input clk;
+output reg [3:0]A;
+always @(posedge clk)
+begin
+A[3]=((~A[2])&(~A[1])&(~A[0]))^A[3];
+A[2]=((~A[1])&(~A[0]))^A[2];
+A[1]=(~A[0])^A[1];
+A[0]=1^A[0];
+end
+endmodule
 
 
 ### RTL LOGIC UP COUNTER AND DOWN COUNTER  
 
+## UP COUNTER:
+
+![image](https://github.com/DINESH18032004/Exp-7-Synchornous-counters-/assets/119477784/8faef9e2-d96f-4100-baf2-c10e7046d866)
 
 
+## DOWN COUNTER:
 
+![image](https://github.com/DINESH18032004/Exp-7-Synchornous-counters-/assets/119477784/1d98e571-1272-451f-b775-bb7c0125da90)
 
 
 
@@ -74,15 +118,26 @@ RegisterNumber:
 
 ### TIMING DIGRAMS FOR COUNTER  
 
+## UP COUNTER:
 
+![image](https://github.com/DINESH18032004/Exp-7-Synchornous-counters-/assets/119477784/1d804c1c-14d1-49a4-8556-9ae4d3e2b6a8)
+
+## DOWN COUNTER:
+
+
+![image](https://github.com/DINESH18032004/Exp-7-Synchornous-counters-/assets/119477784/e1a5fef7-9ec0-4596-85a3-7fc41b305a9d)
 
 
 
 ### TRUTH TABLE 
 
+![image](https://github.com/DINESH18032004/Exp-7-Synchornous-counters-/assets/119477784/1f231209-d727-479d-8868-8723f1f240f4)
 
 
+![image](https://github.com/DINESH18032004/Exp-7-Synchornous-counters-/assets/119477784/64486bc2-747f-4dcc-945c-88eb4144140e)
 
 
 
 ### RESULTS 
+
+Thus the program has been executed successfully.
